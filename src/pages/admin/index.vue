@@ -12,7 +12,7 @@
           </div>
         </div>
         <el-menu
-          unique-opened	
+          unique-opened
           :default-active="activeIndex"
           class="el-menu-vertical"
           @select="handleSelect"
@@ -32,7 +32,6 @@
                   <span slot="title">{{sub.label}}</span>
                 </el-menu-item>
               </div>
-                
             </el-submenu>
             <el-menu-item v-else :key="item.path" :title="item.label" :index="item.path">
               <i :class="item.icon"></i>
@@ -47,7 +46,7 @@
           <div class="header-div">
             <!-- Ant
             <i>Live</i>-->
-            
+
             <el-dropdown @command="handleCommand" class="header-dropdown">
               <span class="el-dropdown-link">
                 <el-avatar
@@ -58,8 +57,7 @@
                 <i class="el-icon-arrow-down el-icon--right"></i>
               </span>
               <el-dropdown-menu slot="dropdown">
-                <el-dropdown-item command="a">个人信息</el-dropdown-item>
-                <el-dropdown-item command="c" divided>退出</el-dropdown-item>
+                <el-dropdown-item command="logout" divided>退出</el-dropdown-item>
               </el-dropdown-menu>
             </el-dropdown>
           </div>
@@ -74,6 +72,7 @@
 </template>
 
 <script>
+import store from "../../store";
 import screenfull from "screenfull";
 export default {
   name: "admin-index",
@@ -113,25 +112,23 @@ export default {
           path: "place-manage",
           label: "场地中心"
         },
-                {
+        {
           index: 6,
           icon: "el-icon-user",
           path: "store-manage",
           label: "收藏管理"
         },
-                {
+        {
           index: 7,
           icon: "el-icon-user",
           path: "city-manage",
           label: "城市管理"
-        },
+        }
       ],
-      loading:true
+      loading: true
     };
   },
-  mounted() {
-
-  },
+  mounted() {},
   methods: {
     handleScreenfull() {
       screenfull.toggle();
@@ -155,7 +152,11 @@ export default {
       console.log("click");
     },
     handleCommand(command) {
-      this.$message("click on item " + command);
+      if (command == "logout") {
+        store.dispatch("logout").then(() => {
+          this.$router.push("/login");
+        });
+      }
     }
   }
 };

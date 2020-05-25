@@ -3,17 +3,12 @@
     <transition name="form-fade" mode="in-out">
       <section class="form_contianer">
         <div class="titleArea rflex" @click="handleToHome">
-          <!-- <img class="logo" :src="logo" alt="小爱admin" /> -->
           <span class="title">
-            Ant
-            <i>Live</i>
+            体育馆管理系统
           </span>
         </div>
         <el-form :model="loginForm" :rules="rules" ref="loginForm" class="loginForm">
           <el-form-item prop="account" class="login-item">
-            <!-- <span class="loginTips">
-              <icon-svg icon-class="iconuser" />
-            </span> -->
             <el-input
               @keyup.enter.native="submitForm('loginForm')"
               class="area"
@@ -23,9 +18,6 @@
             ></el-input>
           </el-form-item>
           <el-form-item prop="password" class="login-item">
-            <!-- <span class="loginTips">
-              <icon-svg icon-class="iconLock" />
-            </span> -->
             <el-input
               @keyup.enter.native="submitForm('loginForm')"
               class="area"
@@ -37,31 +29,9 @@
           <el-form-item>
             <el-button type="primary" @click="submitForm('loginForm')" class="submit_btn">登录</el-button>
           </el-form-item>
-          <div class="register">
+          <!-- <div class="register">
             <router-link :to="{ path: '/register'}">注册用户</router-link>
-          </div>
-          <div class="tiparea">
-            <p class="wxtip">温馨提示：</p>
-            <p class="tip">
-              用户名为：admin/editor
-              <span>(可用于切换权限)</span>
-            </p>
-            <p class="tip">密码为：123456</p>
-          </div>
-          <div class="sanFangArea">
-            <p class="title">第三方账号登录</p>
-            <ul class="rflex">
-              <!-- <li @click="loginByWechat">
-                <icon-svg icon-class="iconwechat" />
-              </li>
-              <li>
-                <icon-svg icon-class="iconweibo" />
-              </li>
-              <li>
-                <icon-svg icon-class="iconGithub" />
-              </li> -->
-            </ul>
-          </div>
+          </div> -->
         </el-form>
       </section>
     </transition>
@@ -80,8 +50,8 @@ export default {
     return {
       logo: logoImg,
       loginForm: {
-        account: "794409767@qq.com",
-        password: "123123"
+        account: "",
+        password: ""
       },
       rules: {
         account: [
@@ -238,12 +208,6 @@ export default {
 .form-fade-leave-active {
   transform: translate3d(0, -50px, 0);
   opacity: 0;
-}
-.loginForm {
-  .el-button--primary {
-    background-color: #ff7c1a;
-    border: 1px solid #ff7c1a;
-  }
 }
 .sanFangArea {
   border-top: 1px solid #dcdfe6;

@@ -8,7 +8,18 @@ const routes = [
     {
         path: '/',
         name: 'center',
-        component: AdminCenter
+        component: AdminCenter,
+        children:[
+            {
+                path:'',
+                component:()=>import("./pages/admin/charts"),
+            }
+        ]
+    },
+    {
+        path: '/login',
+        name: 'login',
+        component: ()=>import("./pages/login")
     },
     {
         path: '/admin',
